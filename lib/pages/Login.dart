@@ -30,9 +30,6 @@ class _LoginPageState extends State<LoginPage> {
       changeBtn = false;
     });
     }
-
-
-    
   }
 
   @override
