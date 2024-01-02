@@ -32,7 +32,7 @@ class CatalogItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150, // Set a fixed height or adjust as needed
+      height: 150,
       child: VxBox(
         child: Row(
           children: [
@@ -42,7 +42,7 @@ class CatalogItem extends StatelessWidget {
                   .box
                   .roundedSM
                   .p8
-                  .color(MyTheme.creamColor)
+                  .color(context.canvasColor)
                   .make()
                   .p8()
                   .w40(context),
@@ -52,27 +52,27 @@ class CatalogItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
-                  catalog.desc.text.textStyle(context.captionStyle).make(),
+                  catalog.name.text.lg.color(context.theme.floatingActionButtonTheme.backgroundColor).bold.make(),
+                  catalog.desc.text.color(context.theme.floatingActionButtonTheme.backgroundColor).textStyle(context.captionStyle).make(),
                   // Spacer(),
                   ButtonBar(
                     alignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      "\$${catalog.price}".text.bold.xl.make(),
+                      "\$${catalog.price}".text.color(context.theme.floatingActionButtonTheme.backgroundColor).bold.sm.make(),
                       ElevatedButton(
                         onPressed: () {},
                         style: ButtonStyle(
                           foregroundColor: MaterialStatePropertyAll(
                               Color.fromARGB(255, 255, 255, 255)),
                           backgroundColor:
-                              MaterialStatePropertyAll(MyTheme.darkBluishColor),
+                              MaterialStatePropertyAll(context.theme.floatingActionButtonTheme.backgroundColor),
                           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
                         ),
-                        child: Text("Buy"),
+                        child: Text("Add to cart"),
                       ),
                     ],
                   ),
@@ -81,7 +81,7 @@ class CatalogItem extends StatelessWidget {
             ),
           ],
         ),
-      ).white.rounded.square(100).make().py16(),
+      ).color(context.cardColor) .rounded.square(100).make().py16(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thirty_days_flutter/pages/home_page.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -35,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: context.canvasColor,
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -50,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Text(
                 "Welcome $name",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: context.theme.floatingActionButtonTheme.backgroundColor ),
               ),
               SizedBox(
                 height: 20,
@@ -60,8 +61,9 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     TextFormField(
+                      style: TextStyle( color: context.theme.floatingActionButtonTheme.backgroundColor),
                       decoration: InputDecoration(
-                          hintText: "Enter User Name", labelText: "UserName"),
+                          hintText: "Enter User Name", labelText: "UserName", labelStyle: TextStyle(color: context.theme.floatingActionButtonTheme.backgroundColor), hintStyle:TextStyle( color: context.theme.floatingActionButtonTheme.backgroundColor),),
                       onChanged: (value) {
                         setState(() {
                           name = value;
@@ -75,9 +77,10 @@ class _LoginPageState extends State<LoginPage> {
                       },
                     ),
                     TextFormField(
+                      style: TextStyle( color: context.theme.floatingActionButtonTheme.backgroundColor),
                       obscureText: true,
                       decoration: InputDecoration(
-                          hintText: "Enter Password", labelText: "Password"),
+                          hintText: "Enter Password", labelText: "Password", labelStyle: TextStyle(color: context.theme.floatingActionButtonTheme.backgroundColor), hintStyle:TextStyle( color: context.theme.floatingActionButtonTheme.backgroundColor),),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Password can't be empty";
@@ -111,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                                     fontSize: 18),
                               ),
                         decoration: BoxDecoration(
-                            color: Colors.deepPurple,
+                            color: context.theme.floatingActionButtonTheme.backgroundColor,
                             borderRadius:
                                 BorderRadius.circular(changeBtn ? 50 : 8)),
                       ),

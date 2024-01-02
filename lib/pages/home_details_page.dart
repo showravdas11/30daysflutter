@@ -11,29 +11,31 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      backgroundColor: MyTheme.creamColor,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           children: [
-            "\$${catalog.price}".text.bold.xl4.red800.make(),
+            "\$${catalog.price}".text.color(context.theme.floatingActionButtonTheme.backgroundColor).bold.xl4.make(),
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
-                foregroundColor:
-                    MaterialStatePropertyAll(Color.fromARGB(255, 255, 255, 255)),
+                foregroundColor: MaterialStatePropertyAll(
+                    Color.fromARGB(255, 255, 255, 255)),
                 backgroundColor:
-                    MaterialStatePropertyAll(MyTheme.darkBluishColor),
+                    MaterialStatePropertyAll(context.theme.floatingActionButtonTheme.backgroundColor),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
               ),
-              child: Text("Buy"),
-            ).wh(100, 50),
+              child: Text("Add to cart"),
+            ).wh(120, 50),
           ],
         ).p24(),
       ),
@@ -51,17 +53,21 @@ class HomeDetailPage extends StatelessWidget {
                 arcType: VxArcType.convey,
                 edge: VxEdge.top,
                 child: Container(
-                    color: Colors.white,
+                    color: context.cardColor,
                     width: context.screenWidth,
                     child: Column(
                       children: [
                         catalog.name.text.xl4
-                            .color(MyTheme.darkBluishColor)
+                            .color(context.theme.floatingActionButtonTheme.backgroundColor)
                             .bold
                             .make(),
-                        catalog.desc.text.xl
+                        catalog.desc.text.xl.color(context.theme.floatingActionButtonTheme.backgroundColor)
                             .textStyle(context.captionStyle)
                             .make(),
+                        10.heightBox,
+                        "Non labore mollit dolor minim do nisi excepteur. Excepteur in do dolor in laborum voluptate anim incididunt fugiat cupidatat et eu nostrud. Occaecat amet esse exercitation et proident qui elit nostrud aliqua veniam qui Lorem. In nostrud proident duis minim enim minim est adipisicing consectetur id ullamco fugiat est."
+                            .text.textStyle(context.captionStyle).color(context.theme.floatingActionButtonTheme.backgroundColor)
+                            .make().p16()
                       ],
                     ).py64()),
               ),
